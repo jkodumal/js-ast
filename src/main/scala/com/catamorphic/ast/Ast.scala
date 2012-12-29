@@ -2,13 +2,6 @@ package com.catamorphic
 package ast
 
 import scalaz._, Scalaz._
-import play.api.libs.json._
-import play.api.libs.functional.syntax._
-
-object AstJson {
-  implicit val positionReads = Json.reads[Position]
-  implicit val sourceLocationReads = Json.reads[SourceLocation]
-}
 
 sealed case class SourceLocation(source: Option[String], start: Position, end: Position)
 
@@ -24,7 +17,7 @@ sealed trait Declaration extends Statement
 
 sealed trait Pattern extends Node
 
-sealed trait Literal extends Node with Expression
+case class Literal(loc: Option[SourceLocation], value: LiteralValue) extends Node with Expression
 
 sealed trait Expression extends Node with Pattern
 
