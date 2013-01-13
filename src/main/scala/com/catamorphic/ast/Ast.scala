@@ -78,9 +78,9 @@ sealed case class FunctionDeclaration(loc: Option[SourceLocation], id: Identifie
 sealed case class VariableDeclaration(loc: Option[SourceLocation], declarations: List[VariableDeclarator], kind: VariableDeclarationKind) extends Declaration
 
 sealed abstract class VariableDeclarationKind
-case object VariableDeclarationKindVar
-case object VariableDeclarationKindLet
-case object VariableDeclarationKindConst
+case object VariableDeclarationKindVar extends VariableDeclarationKind
+case object VariableDeclarationKindLet extends VariableDeclarationKind
+case object VariableDeclarationKindConst extends VariableDeclarationKind
 
 sealed case class VariableDeclarator(loc: Option[SourceLocation], id: Pattern, init: Option[Expression]) extends Declaration
 
